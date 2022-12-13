@@ -83,8 +83,8 @@ def start_tetris():
         action2 = next_actions2[index2]
 
 
-        reward, done = env.step(action, render=False)
-        reward2, done2 = env2.step(action2, render=True)
+        reward, done, __ = env.step(action, render=False)
+        reward2, done2, __ = env2.step(action2, render=True)
 
         if torch.cuda.is_available():
             next_state = next_state.cuda()
