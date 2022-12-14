@@ -3,6 +3,8 @@
 ## Introduction
 
 Here is Python source code for a DQN implementation of multiagent Tetris.
+![](https://github.com/arxk9/multiagent_tetris/blob/main/demo/trained_agents.gif)
+
 
 ## How to use
 
