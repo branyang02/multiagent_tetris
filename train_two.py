@@ -10,7 +10,6 @@ from tensorboardX import SummaryWriter
 
 from src.deep_q_network import DeepQNetwork
 from src.tetris import Tetris
-from src.tetris2 import Tetris2
 from collections import deque
 
 torch.set_printoptions(threshold=10_000)
@@ -33,7 +32,7 @@ def get_args():
     parser.add_argument("--replay_memory_size", type=int, default=30_000,  # default = 30_000
                         help="Number of epoches between testing phases")
     parser.add_argument("--log_path", type=str, default="tensorboard")
-    parser.add_argument("--saved_path", type=str, default="double_trained")
+    parser.add_argument("--saved_path", type=str, default="double_trained_new")
 
     args = parser.parse_args()
     return args
@@ -65,8 +64,8 @@ def train(opt):
     writer = SummaryWriter(opt.log_path)
     writer2 = SummaryWriter(opt.log_path + "_2")
 
-    env = Tetris(width=opt.width, height=opt.height, block_size=opt.block_size)
-    env2 = Tetris2(width=opt.width, height=opt.height, block_size=opt.block_size)
+    env = Tetris(width=opt.width, height=opt.height, block_size=opt.block_size, agent_id=0)
+    env2 = Tetris(width=opt.width, height=opt.height, block_size=opt.block_size, agent_id=1)
 
     model = DeepQNetwork()
     model2 = DeepQNetwork()
@@ -224,6 +223,7 @@ def train(opt):
 
 
         if len(replay_memory) < opt.replay_memory_size / 10 and len(replay_memory2) < opt.replay_memory_size / 10:
+            print("collecting experience replay")
             continue
 
         epoch += 1

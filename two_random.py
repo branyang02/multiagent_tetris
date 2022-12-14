@@ -10,7 +10,6 @@ from tensorboardX import SummaryWriter
 
 from src.deep_q_network import DeepQNetwork
 from src.tetris import Tetris
-from src.tetris2 import Tetris2
 from collections import deque
 
 
@@ -39,19 +38,12 @@ def get_args():
 
 def start_tetris():
     opt = get_args()
-    env = Tetris(width=opt.width, height=opt.height, block_size=opt.block_size)
-    env2 = Tetris2(width=opt.width, height=opt.height, block_size=opt.block_size)
+    env = Tetris(width=opt.width, height=opt.height, block_size=opt.block_size,agent_id=0)
+    env2 = Tetris(width=opt.width, height=opt.height, block_size=opt.block_size,agent_id=1)
 
     while True:
         next_steps = env.get_next_states()  # all possible states
         next_steps2 = env2.get_next_states()
-        # Exploration or exploitation
-        # epsilon = opt.final_epsilon + (max(opt.num_decay_epochs - epoch, 0) * (
-                # opt.initial_epsilon - opt.final_epsilon) / opt.num_decay_epochs)
-        # u = random()
-        # random_action = u <= epsilon  # Boolean variable
-        # next_actions: tuple
-        # next states: tuple
 
         next_actions, next_states = zip(*next_steps.items())  # all possible actions and states of the current piece
         next_actions2, next_states2 = zip(*next_steps2.items()) # all possible actions
@@ -64,19 +56,9 @@ def start_tetris():
             next_states = next_states.cuda()
             next_States2 = next_states2.cuda()
 
-        # model.eval()
-        # with torch.no_grad():
-        #     predictions = model(next_states)[:, 0]
-        # print(next_steps)
-        
-        # model.train()
-
         # if random_action:  # epsilon greedy
         index = randint(0, len(next_steps) - 1)
         index2 = randint(0, len(next_steps2) - 1)
-
-        # else:
-        #     index = torch.argmax(predictions).item()
 
         next_state = next_states[index, :]
         action = next_actions[index]

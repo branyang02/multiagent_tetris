@@ -44,7 +44,8 @@ class Tetris:
          [7, 7, 7]]
     ]
 
-    def __init__(self, height=20, width=10, block_size=20):
+    def __init__(self, height=20, width=10, block_size=20, agent_id=None):
+        self.agent_id = agent_id
         self.height = height
         self.width = width
         self.block_size = block_size
@@ -72,7 +73,6 @@ class Tetris:
             num_garbage = 4
         if cleared_lines == 4 and b2b != 0:
             num_garbage += b2b
-            print("b2b %d player 1" % b2b)
         
         temp_board = deque(self.board)
         temp_board.rotate(-num_garbage)
@@ -230,7 +230,7 @@ class Tetris:
         while not self.check_collision(self.piece, self.current_pos):
             self.current_pos["y"] += 1
             if render:
-                self.render(video)
+                self.render(video, agent_id=self.agent_id)
 
         overflow = self.truncate(self.piece, self.current_pos)
         if overflow:
@@ -250,7 +250,7 @@ class Tetris:
 
         return score, self.gameover, lines_cleared
 
-    def render(self, video=None):
+    def render(self, video=None, agent_id=None):
         if not self.gameover:
             img = [self.piece_colors[p] for row in self.get_current_board_state() for p in row]
         else:
@@ -287,7 +287,7 @@ class Tetris:
 
         if video:
             video.write(img)
-
-        cv2.imshow("Deep Q-Learning Tetris", img)
+        
+        cv2.imshow("Deep Q-Learning Tetris"+str(agent_id), img)
         # cv2.imshow("Deep Q-Learning Tetris2", img)
         cv2.waitKey(1)

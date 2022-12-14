@@ -51,10 +51,6 @@ def test(opt):
         model2.cuda()
         state = state.cuda()
         state2 = state2.cuda()
-
-
-    # out = cv2.VideoWriter(opt.output, cv2.VideoWriter_fourcc(*"MJPG"), opt.fps,
-    #                       (int(1.5*opt.width*opt.block_size), opt.height*opt.block_size))
     
     b2b1, b2b2 = 0, 0
     while True:
