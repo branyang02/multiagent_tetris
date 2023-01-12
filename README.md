@@ -45,8 +45,13 @@ python trained_vs_trained.py
 # Models
 The optimal model is located in /double_trained_new and /double_trained_new_2
 
-Here are the results:
+Train Score:
 ![](https://github.com/branyang02/multiagent_tetris/blob/main/LeakyReLU_50k_results/Train_Score.svg)
+Number of Cleared Lines:
+![](https://github.com/branyang02/multiagent_tetris/blob/main/LeakyReLU_50k_results/Train_Cleared_lines.svg)
+Number of Tetrominoes
+![](https://github.com/branyang02/multiagent_tetris/blob/main/LeakyReLU_50k_results/Train_Tetrominoes.svg)
+
 
 
 # Authors
