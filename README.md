@@ -1,4 +1,4 @@
-# [PYTORCH] DQN for Multiplayer Tetris
+# [PYTORCH] Multiplayer Tetris
 
 # Multiplayer Tetris with Reinforcement Learning
 
