@@ -13,7 +13,7 @@ def get_args():
     parser.add_argument("--height", type=int, default=20, help="The common height for all images")
     parser.add_argument("--block_size", type=int, default=30, help="Size of a block")
     parser.add_argument("--fps", type=int, default=300, help="frames per second")
-    parser.add_argument("--saved_path", type=str, default="double_trained")
+    parser.add_argument("--saved_path", type=str, default="double_trained_new")
     parser.add_argument("--output", type=str, default="output.mp4")
 
     args = parser.parse_args()
