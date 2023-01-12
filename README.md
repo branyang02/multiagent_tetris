@@ -56,13 +56,13 @@ The model for single-player Tetris is located in the directory:
 ## Training Results
 
 ### Train Score:
-![Train Score](https://github.com/branyang02/multiagent_tetris/blob/main/LeakingReLU_50k_results/Train_Score.svg)
+![Train Score](https://github.com/branyang02/multiagent_tetris/blob/main/LeakyReLU_50k_results/Train_Score.svg)
 
 ### Number of Cleared Lines:
-![Number of Cleared Lines](https://github.com/branyang02/multiagent_tetris/blob/main/LeakingReLU_50k_results/Train_Cleared_lines.svg)
+![Number of Cleared Lines](https://github.com/branyang02/multiagent_tetris/blob/main/LeakyReLU_50k_results/Train_Cleared_lines.svg)
 
 ### Number of Tetrominoes:
-![Number of Tetrominoes](https://github.com/branyang02/multiagent_tetris/blob/main/LeakingReLU_50k_results/Train_Tetrominoes.svg)
+![Number of Tetrominoes](https://github.com/branyang02/multiagent_tetris/blob/main/LeakyReLU_50k_results/Train_Tetrominoes.svg)
 
 
 
